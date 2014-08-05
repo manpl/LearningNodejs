@@ -1,0 +1,18 @@
+const   fs = require('fs'),
+        net = require('net'),
+        filename = process.argv[2];
+
+
+
+
+let server = net.createServer(function(connection){
+    console.log('connected');
+    connection.write('Hello there');
+    connection.on('close', function(){
+        console.log('closing connection');
+    });
+});
+
+server.listen(5432, function(){
+    console.log('waiting for subs')
+});
